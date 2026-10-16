@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get $750 Towards Shopping at Costco</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#005DAA;
+    --blue-mid:#00538F;
+    --blue-deep:#00427A;
+    --blue-night:#002B52;
+    --red:#E31837;
+    --red-deep:#C1102D;
+    --sky-pale:#EDF4FA;
+    --sky-line:#DCE9F4;
+    --gold:#C9A44C;
+    --ink:#141A1F;
+    --muted:#5E6871;
+    --line:#E3E8EC;
+    --paper:#ffffff;
+    --off:#F2F5F8;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Figtree',Helvetica,Arial,system-ui,sans-serif;
+    background:var(--off);color:var(--ink);
+    display:flex;justify-content:center;padding:0 0 40px;
+    -webkit-font-smoothing:antialiased;
+  }
+  svg{shape-rendering:geometricPrecision}
+  .wrap{width:100%;max-width:484px;background:var(--paper)}
+
+  /* ===== hero ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 60%),
+      linear-gradient(180deg,#00538F 0%,#00427A 55%,#002B52 100%);
+    color:#fff;padding:18px 18px 34px;border-radius:0 0 32px 32px;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,var(--red) 0 40%,var(--gold) 40% 100%);opacity:.9;
+  }
+
+  /* ticker pill */
+  .toast{
+    position:relative;z-index:2;background:#fff;border-radius:999px;
+    padding:0 7px 0 19px;display:flex;align-items:center;gap:12px;
+    margin-bottom:26px;height:54px;overflow:hidden;
+  }
+  .live-dot{position:relative;flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--red)}
+  .live-dot::before{
+    content:"";position:absolute;inset:-6px;border-radius:50%;
+    border:1px solid rgba(227,24,55,.32);animation:halo 2.4s var(--ease) infinite;
+  }
+  @keyframes halo{0%{transform:scale(.5);opacity:1}70%{transform:scale(1.75);opacity:0}100%{opacity:0}}
+  .toast-text{
+    font-weight:500;font-size:14px;color:var(--muted);letter-spacing:-.1px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1 1 auto;min-width:0;
+  }
+  .toast-text .who{font-weight:800;color:var(--ink)}
+  .toast-text .amt{color:var(--blue);font-weight:800}
+  .gift-badge{
+    flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--sky-pale);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .gift-badge svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .toast-text.out{animation:out .34s var(--ease) forwards}
+  .toast-text.in{animation:in .42s var(--ease) forwards}
+  @keyframes out{to{opacity:0;transform:translateY(-12px)}}
+  @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  /* wordmark */
+  .logo{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+  .logo .mark{
+    font-weight:900;font-size:32px;letter-spacing:-1.6px;color:#fff;text-transform:uppercase;
+    display:inline-flex;align-items:center;white-space:nowrap;
+  }
+  .logo .mark i{font-style:normal;position:relative}
+  .logo .mark i::after{
+    content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;
+    background:var(--red);border-radius:999px;
+  }
+  .logo .est{
+    font-size:9.5px;letter-spacing:1.7px;color:rgba(255,255,255,.7);
+    text-transform:uppercase;font-weight:700;
+  }
+
+  h1{
+    position:relative;z-index:2;text-align:center;color:rgba(255,255,255,.78);
+    font-size:11px;line-height:1.2;font-weight:800;letter-spacing:2.8px;
+    margin-top:26px;text-transform:uppercase;
+  }
+  h1 sup{font-size:8.5px;top:-4px;color:rgba(255,255,255,.5)}
+
+  /* value plate */
+  .plate-wrap{position:relative;z-index:2;text-align:center;margin-top:16px}
+  .plate{
+    display:inline-flex;align-items:flex-start;gap:3px;
+    background:#fff;border-radius:20px;padding:18px 28px 15px 24px;
+    border-bottom:3px solid var(--gold);
+  }
+  .plate .cur{font-size:24px;font-weight:800;color:var(--blue-deep);margin-top:8px;letter-spacing:-.5px}
+  .plate .big{font-size:58px;font-weight:900;color:var(--blue-deep);line-height:.88;letter-spacing:-3.4px}
+  .plate .cents{font-size:19px;font-weight:800;color:var(--blue-deep);margin-top:7px;letter-spacing:-.4px}
+
+  h2{
+    position:relative;z-index:2;text-align:center;font-size:21px;font-weight:700;
+    margin-top:20px;color:#fff;letter-spacing:-.5px;
+  }
+  .bonus{
+    position:relative;z-index:2;display:inline-flex;align-items:center;gap:7px;
+    color:#fff;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2);
+    font-weight:700;font-size:11.5px;padding:9px 15px;border-radius:999px;letter-spacing:.1px;
+  }
+  .bonus-wrap{position:relative;z-index:2;text-align:center;margin-top:16px}
+  .bonus svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .sub{
+    position:relative;z-index:2;text-align:center;font-size:14.5px;
+    color:rgba(255,255,255,.78);margin:14px auto 26px;line-height:1.6;max-width:330px;
+  }
+
+  /* ===== buttons ===== */
+  .cta{
+    position:relative;z-index:2;
+    display:flex;align-items:center;justify-content:center;gap:11px;
+    width:100%;background:#fff;color:var(--blue-deep);border:none;border-radius:999px;
+    padding:20px 14px;font-family:inherit;font-size:17px;font-weight:800;letter-spacing:-.25px;
+    cursor:pointer;text-decoration:none;
+    transition:background .22s var(--ease),color .22s var(--ease),transform .18s var(--ease);
+  }
+  .cta:hover{background:var(--sky-pale)}
+  .cta:active{transform:scale(.985)}
+  .cta .ic{flex:0 0 21px;width:21px;height:21px;display:block}
+  .cta .ic svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cta .arw{
+    flex:0 0 16px;width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .24s var(--ease);
+  }
+  .cta:hover .arw{transform:translateX(3px)}
+  .cta.solid{background:var(--red);color:#fff}
+  .cta.solid:hover{background:var(--red-deep)}
+  .consent{
+    position:relative;z-index:2;text-align:center;font-size:11.5px;line-height:1.65;
+    color:rgba(255,255,255,.55);margin-top:14px;padding:0 12px;
+  }
+  .consent.dark{color:#98A1A8}
+
+  .content{padding:0 18px}
+
+  /* ===== cards ===== */
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:22px;
+    padding:26px 22px;margin:18px 0 0;
+  }
+  .card h3.eyebrow{font-size:20px;letter-spacing:-.65px;color:var(--ink);font-weight:800;margin-bottom:3px}
+  .card .lede{font-size:13.5px;color:var(--muted);margin-bottom:4px}
+
+  .step{display:flex;gap:15px;padding:17px 0 0;align-items:flex-start}
+  .step:first-of-type{padding-top:16px}
+  .num{
+    flex:0 0 32px;width:32px;height:32px;border-radius:50%;
+    background:var(--sky-pale);border:1px solid var(--sky-line);color:var(--blue);
+    font-size:13.5px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  }
+  .step > div:last-child{min-width:0;flex:1 1 auto;padding-top:4px}
+  .step h4{
+    font-size:clamp(13px,3.85vw,16px);font-weight:800;margin-bottom:5px;letter-spacing:-.3px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .step p{font-size:14px;color:var(--muted);line-height:1.6}
+
+  /* ===== proof ===== */
+  .proof{
+    background:var(--sky-pale);border:1px solid var(--sky-line);border-radius:22px;
+    padding:18px 22px;display:flex;align-items:center;gap:15px;margin:18px 0 0;
+  }
+  .faces{display:flex;flex:0 0 auto}
+  .faces span{
+    width:38px;height:38px;border-radius:50%;background:#fff;border:2px solid var(--sky-pale);
+    display:flex;align-items:center;justify-content:center;font-size:17px;margin-left:-12px;
+  }
+  .faces span:first-child{margin-left:0}
+  .proof p{font-size:14px;color:var(--muted);line-height:1.5}
+  .proof p b{color:var(--blue);font-weight:800}
+
+  /* ===== FAQ ===== */
+  .faq h3{font-size:21px;font-weight:800;margin-bottom:6px;letter-spacing:-.75px}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq details:last-of-type{border-bottom:none}
+  .faq summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+    gap:14px;padding:19px 0;font-size:15px;font-weight:700;letter-spacing:-.2px;
+    transition:color .2s var(--ease);
+  }
+  .faq summary:hover{color:var(--blue)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .chev{
+    flex:0 0 26px;width:26px;height:26px;border-radius:50%;
+    background:var(--sky-pale);border:1px solid var(--sky-line);
+    position:relative;transition:transform .32s var(--ease),background .2s var(--ease);
+  }
+  .faq summary .chev::before{
+    content:"";position:absolute;top:50%;left:50%;width:7px;height:7px;margin:-5px 0 0 -4px;
+    border-right:1.7px solid var(--blue);border-bottom:1.7px solid var(--blue);
+    border-radius:0 0 2px 0;transform:rotate(45deg);
+  }
+  .faq details[open] summary .chev{transform:rotate(180deg);background:#fff}
+  .faq .ans{overflow:hidden;animation:reveal .3s var(--ease)}
+  .faq .ans p{font-size:14px;color:var(--muted);line-height:1.7;padding:0 34px 19px 0}
+  @keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+  .content > .cta{margin-top:20px}
+
+  /* ===== trust ===== */
+  .trust{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    margin:20px 0 6px;background:var(--off);border-radius:16px;padding:16px 20px;
+  }
+  .trust span{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+  .trust .slogan{color:var(--blue)}
+  .trust .ver{color:#12793D}
+  .trust svg{width:16px;height:16px;stroke-width:1.6}
+
+  footer{text-align:left;margin-top:24px;border-top:1px solid var(--line);padding:22px 0 0}
+  footer .fmark{
+    display:inline-block;font-size:16px;font-weight:900;letter-spacing:-.8px;
+    text-transform:uppercase;color:var(--blue);margin-bottom:13px;
+  }
+  footer .fmark i{font-style:normal;position:relative}
+  footer .fmark i::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:var(--red);border-radius:999px}
+  footer .fine{font-size:10.5px;color:#8B959C;line-height:1.85;margin-bottom:15px}
+  footer nav{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+  footer a{font-size:11px;color:var(--blue);text-decoration:none;font-weight:700;letter-spacing:.3px;border-bottom:1px solid var(--sky-line);padding-bottom:1px;transition:border-color .2s var(--ease)}
+  footer a:hover{border-color:var(--blue)}
+  footer .dot{color:var(--line);font-size:11px}
+
+  /* ===== modals ===== */
+  .modal{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center;background:rgba(0,30,55,.48)}
+  .modal.open{display:flex}
+  .sheet{
+    width:100%;max-width:484px;background:#fff;border-radius:24px 24px 0 0;max-height:86vh;
+    display:flex;flex-direction:column;animation:up .32s var(--ease);
+  }
+  @keyframes up{from{transform:translateY(34px)}to{transform:translateY(0)}}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px;border-bottom:1px solid var(--line)}
+  .sheet-head h3{font-size:19px;font-weight:800;letter-spacing:-.6px}
+  .sheet-close{
+    flex:0 0 32px;width:32px;height:32px;border:1px solid var(--line);background:#fff;border-radius:50%;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s var(--ease);
+  }
+  .sheet-close:hover{background:var(--off)}
+  .sheet-close svg{width:14px;height:14px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round}
+  .sheet-body{padding:22px;overflow-y:auto}
+  .sheet-body h4{font-size:10.5px;letter-spacing:1.9px;text-transform:uppercase;color:var(--blue);font-weight:800;margin:24px 0 9px}
+  .sheet-body h4:first-child{margin-top:0}
+  .sheet-body p{font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:8px}
+  .sheet-body ul{margin:0 0 8px 17px}
+  .sheet-body li{font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:7px}
+  .sheet-foot{padding:16px 22px 24px;border-top:1px solid var(--line)}
+
+  @media(prefers-reduced-motion:reduce){
+    .toast-text.out,.toast-text.in,.faq .ans,.sheet,.live-dot::before{animation:none}
+    .cta,.cta .arw{transition:none}
+  }
+  @media(max-width:400px){
+    .plate .big{font-size:48px}
+    h2{font-size:19px}
+    .cta{font-size:16px}
+    .toast-text{font-size:13px}.proof p{font-size:13px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+
+    <div class="toast">
+      <span class="live-dot" aria-hidden="true"></span>
+      <p class="toast-text" id="toastText"><span class="who">Olivia W.</span> just claimed the <span class="amt">$750 Voucher</span>.</p>
+      <span class="gift-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="3.2" y="8.2" width="17.6" height="4.6" rx="2.1"/>
+          <path d="M4.8 12.8v6.6a2.1 2.1 0 0 0 2.1 2.1h10.2a2.1 2.1 0 0 0 2.1-2.1v-6.6"/>
+          <path d="M12 8.2v13.3"/>
+          <path d="M12 8.2H8.1a2.45 2.45 0 1 1 0-4.9c2.6 0 3.9 4.9 3.9 4.9z"/>
+          <path d="M12 8.2h3.9a2.45 2.45 0 1 0 0-4.9C13.3 3.3 12 8.2 12 8.2z"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="logo">
+      <span class="mark">Cost<i>co</i></span>
+      <span class="est">Rewards &middot; Est. 2026</span>
+    </div>
+
+    <h1>Executive Member Reward<sup>*</sup></h1>
+
+    <div class="plate-wrap">
+      <div class="plate">
+        <span class="cur">$</span><span class="big">750</span><span class="cents">00</span>
+      </div>
+    </div>
+
+    <h2>Towards shopping at Costco</h2>
+
+    <div class="bonus-wrap">
+      <span class="bonus">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3.4" y="9" width="17.2" height="4.2" rx="1.9"/>
+          <path d="M4.9 13.2v6.1a2 2 0 0 0 2 2h10.2a2 2 0 0 0 2-2v-6.1"/>
+          <path d="M12 9v12.3"/>
+          <path d="M12 9H8.4a2.3 2.3 0 1 1 0-4.6C10.8 4.4 12 9 12 9z"/>
+          <path d="M12 9h3.6a2.3 2.3 0 1 0 0-4.6C13.2 4.4 12 9 12 9z"/>
+        </svg>
+        $847,688+ in bonuses claimed today
+      </span>
+    </div>
+
+    <p class="sub">Complete our exclusive brand affinity survey to claim the $750 Costco Voucher.</p>
+
+    <a href="https://linkthem.net/aff_c?offer_id=1323&aff_id=2422" class="cta" rel="noopener">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.8 4.2h2.4a1 1 0 0 1 .98.8l2.42 11a1.6 1.6 0 0 0 1.56 1.25h7.9a1.6 1.6 0 0 0 1.55-1.2l1.79-6.9a.9.9 0 0 0-.87-1.13H6.6"/>
+          <circle cx="10.2" cy="20.4" r="1.35"/>
+          <circle cx="17.8" cy="20.4" r="1.35"/>
+        </svg>
+      </span>
+      Claim My $750
+      <svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h14"/><path d="M13 6.5l5.5 5.5L13 17.5"/></svg>
+    </a>
+    <p class="consent">By clicking &ldquo;Claim My $750&rdquo;, you agree to complete the required steps to receive your gift card.</p>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+      <h3 class="eyebrow">How it works</h3>
+      <p class="lede">Four quick steps to your voucher.</p>
+      <div class="step"><div class="num">1</div><div><h4>Click on &ldquo;Claim My $750&rdquo;</h4><p>Tap the button above to get started</p></div></div>
+      <div class="step"><div class="num">2</div><div><h4>Create Your Account</h4><p>Sign up takes less than 60 seconds</p></div></div>
+      <div class="step"><div class="num">3</div><div><h4>Complete 4&ndash;5 sponsored deals</h4><p>Earn up to a $750 Gift Card &mdash; the more deals you do the more you'll earn</p></div></div>
+      <div class="step"><div class="num">4</div><div><h4>Enjoy your reward</h4><p>Gift card is sent directly to your email</p></div></div>
+    </div>
+
+    <div class="proof">
+      <div class="faces" aria-hidden="true"><span>&#128105;</span><span>&#128113;&#8205;&#9792;&#65039;</span><span>&#128105;&#127997;</span></div>
+      <p><b>6,400+ members</b> claimed their voucher this week alone.</p>
+    </div>
+
+    <div class="card faq">
+      <h3>Frequently Asked Questions</h3>
+      <details>
+        <summary>How long does it take? <i class="chev"></i></summary>
+        <div class="ans"><p>Most users finish in under 20 minutes. Your voucher is processed within 24 hours after verification.</p></div>
+      </details>
+      <details>
+        <summary>What are sponsored deals? <i class="chev"></i></summary>
+        <div class="ans"><p>Sponsored deals are offers from our advertising partners &mdash; free trials, surveys, or sign-ups. You choose which ones you complete.</p></div>
+      </details>
+      <details>
+        <summary>How many deals do I complete? <i class="chev"></i></summary>
+        <div class="ans"><p>Between 4 and 5 sponsored deals. All requirements are clearly shown during registration.</p></div>
+      </details>
+      <details>
+        <summary>When is access processed? <i class="chev"></i></summary>
+        <div class="ans"><p>After your deals are verified (usually 24&ndash;48 hrs), your voucher is sent to the email you registered with.</p></div>
+      </details>
+    </div>
+
+    <a href="https://linkthem.net/aff_c?offer_id=1323&aff_id=2422" class="cta solid" rel="noopener">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.8 4.2h2.4a1 1 0 0 1 .98.8l2.42 11a1.6 1.6 0 0 0 1.56 1.25h7.9a1.6 1.6 0 0 0 1.55-1.2l1.79-6.9a.9.9 0 0 0-.87-1.13H6.6"/>
+          <circle cx="10.2" cy="20.4" r="1.35"/>
+          <circle cx="17.8" cy="20.4" r="1.35"/>
+        </svg>
+      </span>
+      Claim My $750
+      <svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h14"/><path d="M13 6.5l5.5 5.5L13 17.5"/></svg>
+    </a>
+    <p class="consent dark">By clicking &ldquo;Claim My $750&rdquo;, you agree to complete the required steps to receive your gift card.</p>
+
+    <div class="trust" aria-hidden="true">
+      <span class="slogan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4l6.8 2.9v5.6c0 4-2.8 7.2-6.8 8.6-4-1.4-6.8-4.6-6.8-8.6V6.3z"/></svg>
+        Members come first.
+      </span>
+      <span class="ver">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><path d="M7.8 12.4l2.9 2.9 5.6-6.2"/></svg>
+        Verified Offer
+      </span>
+    </div>
+
+    <footer>
+      <span class="fmark">Cost<i>co</i></span>
+      <p class="fine">&copy; 2026 Costco Rewards. This promotional campaign is limited to one claim per household. 18+ residents of US/CA only.</p>
+      <nav>
+        <a href="#" id="privacyLink">Privacy Policy</a><span class="dot">&bull;</span>
+        <a href="#" id="offerLink">See All Offer Details</a>
+      </nav>
+    </footer>
+
+  </div>
+</div>
+
+<div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="sheet" role="document">
+    <div class="sheet-head">
+      <h3 id="privacyTitle">Privacy Policy</h3>
+      <button class="sheet-close" data-close aria-label="Close privacy policy"><svg viewBox="0 0 24 24"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <h4>Information We Collect</h4>
+      <ul>
+        <li>Details you provide at registration, such as your name, email address, postal code, and country.</li>
+        <li>Survey responses and the sponsored deals you choose to complete.</li>
+      </ul>
+      <h4>How We Use It</h4>
+      <ul>
+        <li>To verify your eligibility and deliver your gift card reward.</li>
+        <li>To detect duplicate claims, fraud, and automated sign-ups.</li>
+        <li>To send offer-related emails, which you can unsubscribe from at any time.</li>
+      </ul>
+      <h4>Your Rights</h4>
+      <p>You may request access to, correction of, or deletion of your personal data at any time by contacting our support team.</p>
+      <h4>Data Retention &amp; Security</h4>
+      <p>Data is retained only as long as needed to fulfil rewards and meet obligations.</p>
+    </div>
+    <div class="sheet-foot"><button class="cta solid" data-close type="button">Got It</button></div>
+  </div>
+</div>
+
+<div class="modal" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
+  <div class="sheet" role="document">
+    <div class="sheet-head">
+      <h3 id="offerTitle">Offer Details</h3>
+      <button class="sheet-close" data-close aria-label="Close offer details"><svg viewBox="0 0 24 24"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <h4>The Offer</h4>
+      <p>Complete our brand affinity survey and the required sponsored deals to become eligible for a Costco gift card valued up to $750. Reward value depends on the number of deals completed.</p>
+      <h4>Eligibility</h4>
+      <ul>
+        <li>Open to residents of the United States and Canada aged 18 or older.</li>
+        <li>Limited to one claim per person, per household, per email address.</li>
+        <li>A valid email address and accurate registration details are required.</li>
+      </ul>
+      <h4>Requirements</h4>
+      <ul>
+        <li>Create a free account (takes under 60 seconds).</li>
+        <li>Complete between 4 and 5 sponsored deals from participating advertising partners.</li>
+        <li>Deals may include free trials, surveys, or sign-ups; some may require a purchase or paid subscription.</li>
+        <li>All requirements are displayed clearly before you begin each deal.</li>
+      </ul>
+      <h4>Fulfilment</h4>
+      <p>Deals are typically verified within 24&ndash;48 hours. Once verified, your gift card is emailed to the address used at registration. Gift cards are issued as digital codes and cannot be exchanged for cash.</p>
+    </div>
+    <div class="sheet-foot"><button class="cta solid" data-close type="button">Got It</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NAMES = ["Olivia W.","Chloe B.","Emma R.","Sophia L.","Ava M.","Isabella T.","Mia K.",
+    "Amelia G.","Harper D.","Evelyn S.","Abigail P.","Ella J.","Scarlett H.","Grace N.",
+    "Lily C.","Zoe F.","Natalie V.","Aubrey Q.","Madison A.","Layla O.","Victoria E.",
+    "Hannah Y.","Nora Z.","Riley U.","Camila I.","Penelope X.","Jasmine W.","Brooke S.",
+    "Sierra L.","Maya T."];
+
+  var TEMPLATES = [
+    n => `${n} just claimed the $750 Voucher.`,
+    n => `${n} claimed the Costco Discount.`,
+    n => `${n} just started the claim process.`,
+    n => `${n} is currently verifying...`,
+    n => `${n} secured the $750 Voucher.`,
+    n => `${n} successfully verified eligibility.`,
+    n => `${n} just qualified for the reward.`,
+  ];
+
+  var el = document.getElementById('toastText');
+  var lastName = null, lastTpl = -1;
+  function randName(){ var n; do{ n = NAMES[Math.floor(Math.random()*NAMES.length)]; } while(n===lastName); lastName=n; return n; }
+  function randTpl(){ var i; do{ i = Math.floor(Math.random()*TEMPLATES.length); } while(i===lastTpl); lastTpl=i; return TEMPLATES[i]; }
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  var MAX=14, MIN=11.5;
+  function fit(){
+    el.style.fontSize = MAX+'px';
+    var s = MAX;
+    while(el.scrollWidth > el.clientWidth && s > MIN){ s -= .5; el.style.fontSize = s+'px'; }
+  }
+  window.addEventListener('resize', fit);
+
+  function render(){
+    var name = randName();
+    var msg = esc(randTpl()(name));
+    msg = msg.replace(esc(name), '<span class="who">'+esc(name)+'</span>')
+             .replace(/\$750 Voucher/g,'<span class="amt">$750 Voucher</span>')
+             .replace(/Costco Discount/g,'<span class="amt">Costco Discount</span>');
+    el.classList.remove('in'); el.classList.add('out');
+    setTimeout(function(){
+      el.innerHTML = msg; fit();
+      el.classList.remove('out'); void el.offsetWidth; el.classList.add('in');
+    },340);
+  }
+  fit(); render(); setInterval(render,3000);
+
+  function closeAll(){
+    document.querySelectorAll('.modal.open').forEach(function(m){ m.classList.remove('open'); });
+    document.body.style.overflow='';
+  }
+  function open(id){ closeAll(); var m=document.getElementById(id); if(m){ m.classList.add('open'); document.body.style.overflow='hidden'; } }
+  var pl=document.getElementById('privacyLink'); if(pl) pl.addEventListener('click',function(e){e.preventDefault();open('privacyModal');});
+  var ol=document.getElementById('offerLink');   if(ol) ol.addEventListener('click',function(e){e.preventDefault();open('offerModal');});
+  document.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', closeAll); });
+  document.querySelectorAll('.modal').forEach(function(m){ m.addEventListener('click',function(ev){ if(ev.target===m) closeAll(); }); });
+  document.addEventListener('keydown',function(ev){ if(ev.key==='Escape') closeAll(); });
+
+  var items = document.querySelectorAll('.faq details');
+  items.forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open){ items.forEach(function(o){ if(o!==d) o.open=false; }); } }); });
+})();
+</script>
+</body>
+</html>
